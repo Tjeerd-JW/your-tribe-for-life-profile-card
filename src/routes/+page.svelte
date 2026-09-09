@@ -21,8 +21,8 @@
         },
         BOTTOM: {
             up: "FRONT",
-            right: "RIGHT",
-            left: "LEFT",
+            right: "LEFT",
+            left: "RIGHT",
             down: "BACK",
         },
         TOP: {
@@ -117,7 +117,8 @@
             transform: translate(-50%, -50%) rotateX(var(--rotate-X))
                 rotateY(var(--rotate-Y));
 
-            transition: ease-in-out 2s;
+            transition: cubic-bezier(0.79, 0.48, 0.31, 1.52) 2s;
+            animation: idle 7.5s linear 0s infinite alternate;
             .face {
                 width: var(--cube-size);
                 height: var(--cube-size);
@@ -157,5 +158,35 @@
         transform: rotateX(-90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: orange;
+    }
+
+    @keyframes idle {
+        0% {
+            transform: translate(-50%, -50%) rotateX(var(--rotate-X))
+                rotateY(var(--rotate-Y));
+        }
+
+        25% {
+            transform: translate(-50%, -50%)
+                rotateX(calc(var(--rotate-X) - 2deg))
+                rotateY(calc(var(--rotate-Y) + 2deg));
+        }
+
+        50% {
+            transform: translate(-50%, -50%)
+                rotateX(calc(var(--rotate-X) + 2deg))
+                rotateY(calc(var(--rotate-Y) + 4deg));
+        }
+
+        75% {
+            transform: translate(-50%, -50%)
+                rotateX(calc(var(--rotate-X) - 2deg))
+                rotateY(calc(var(--rotate-Y) - 2deg));
+        }
+        100% {
+            transform: translate(-50%, -50%)
+                rotateX(calc(var(--rotate-X) + 2deg))
+                rotateY(calc(var(--rotate-Y) - 4deg));
+        }
     }
 </style>
