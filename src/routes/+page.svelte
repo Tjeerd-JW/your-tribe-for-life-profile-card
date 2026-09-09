@@ -93,12 +93,14 @@
             class="cube"
             style={`--rotate-X: ${rotateX}deg; --rotate-Y: ${rotateY}deg;`}
         >
-            <div class="face front">front</div>
-            <div class="face right">right</div>
-            <div class="face back">back</div>
-            <div class="face left">left</div>
-            <div class="face top">top</div>
-            <div class="face bottom">bottom</div>
+            <div class="cube-wobble">
+                <div class="face front">front</div>
+                <div class="face right">right</div>
+                <div class="face back">back</div>
+                <div class="face left">left</div>
+                <div class="face top">top</div>
+                <div class="face bottom">bottom</div>
+            </div>
         </div>
     </div>
 </section>
@@ -116,9 +118,13 @@
             transform-style: preserve-3d;
             transform: translate(-50%, -50%) rotateX(var(--rotate-X))
                 rotateY(var(--rotate-Y));
-
-            transition: cubic-bezier(0.79, 0.48, 0.31, 1.52) 2s;
-            animation: idle 7.5s linear 0s infinite alternate;
+            transition: transform 2s cubic-bezier(0.79, 0.48, 0.31, 1.52);
+            .cube-wobble {
+                width: 100%;
+                height: 100%;
+                transform-style: preserve-3d;
+                animation: idle 7.5s linear 0s infinite alternate;
+            }
             .face {
                 width: var(--cube-size);
                 height: var(--cube-size);
@@ -162,31 +168,19 @@
 
     @keyframes idle {
         0% {
-            transform: translate(-50%, -50%) rotateX(var(--rotate-X))
-                rotateY(var(--rotate-Y));
+            transform: rotateX(0deg) rotateY(0deg);
         }
-
         25% {
-            transform: translate(-50%, -50%)
-                rotateX(calc(var(--rotate-X) - 2deg))
-                rotateY(calc(var(--rotate-Y) + 2deg));
+            transform: rotateX(-2deg) rotateY(2deg);
         }
-
         50% {
-            transform: translate(-50%, -50%)
-                rotateX(calc(var(--rotate-X) + 2deg))
-                rotateY(calc(var(--rotate-Y) + 4deg));
+            transform: rotateX(2deg) rotateY(4deg);
         }
-
         75% {
-            transform: translate(-50%, -50%)
-                rotateX(calc(var(--rotate-X) - 2deg))
-                rotateY(calc(var(--rotate-Y) - 2deg));
+            transform: rotateX(-2deg) rotateY(-2deg);
         }
         100% {
-            transform: translate(-50%, -50%)
-                rotateX(calc(var(--rotate-X) + 2deg))
-                rotateY(calc(var(--rotate-Y) - 4deg));
+            transform: rotateX(2deg) rotateY(-4deg);
         }
     }
 </style>
