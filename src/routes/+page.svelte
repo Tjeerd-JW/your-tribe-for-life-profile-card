@@ -1,4 +1,5 @@
 <script>
+    import arrow from "$lib/img/arrow.webp";
     // let { data } = $props();
     // const persons = data.persons;
     let rotateX = $state(0);
@@ -77,15 +78,17 @@
 </script>
 
 <section>
-    <button class="up-button" onclick={() => turnHandler("up")}> up </button>
-    <button class="left-button" onclick={() => turnHandler("left")}>
-        left
+    <button class="up-button button" onclick={() => turnHandler("up")}>
+        <img src={arrow} alt="pijl" width="25" />
     </button>
-    <button class="right-button" onclick={() => turnHandler("right")}>
-        right
+    <button class="left-button button" onclick={() => turnHandler("left")}>
+        <img src={arrow} alt="pijl" width="25" />
     </button>
-    <button class="down-button" onclick={() => turnHandler("down")}>
-        down
+    <button class="right-button button" onclick={() => turnHandler("right")}>
+        <img src={arrow} alt="pijl" width="25" />
+    </button>
+    <button class="down-button button" onclick={() => turnHandler("down")}>
+        <img src={arrow} alt="pijl" width="25" />
     </button>
 
     <div class="scene" style={`--side-position: ${sidePosition};`}>
@@ -133,6 +136,43 @@
                 background-position: center;
             }
         }
+    }
+
+    .up-button {
+        position: absolute;
+        top: 8%;
+        right: 50%;
+    }
+
+    .left-button {
+        position: absolute;
+        top: 46%;
+        left: 10%;
+        img {
+            transform: rotate(-90deg);
+        }
+    }
+
+    .right-button {
+        position: absolute;
+        top: 46%;
+        right: 10%;
+        img {
+            transform: rotate(90deg);
+        }
+    }
+
+    .down-button {
+        position: absolute;
+        bottom: 8%;
+        left: 50%;
+        img {
+            transform: rotate(180deg);
+        }
+    }
+
+    .button {
+        z-index: 10;
     }
 
     .front {
