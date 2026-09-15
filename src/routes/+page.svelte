@@ -78,76 +78,107 @@
 </script>
 
 <section>
-    <button class="up-button button" onclick={() => turnHandler("up")}>
-        <img src={arrow} alt="pijl" width="25" />
-    </button>
-    <button class="left-button button" onclick={() => turnHandler("left")}>
-        <img src={arrow} alt="pijl" width="25" />
-    </button>
-    <button class="right-button button" onclick={() => turnHandler("right")}>
-        <img src={arrow} alt="pijl" width="25" />
-    </button>
-    <button class="down-button button" onclick={() => turnHandler("down")}>
-        <img src={arrow} alt="pijl" width="25" />
-    </button>
-
-    <div class="scene" style={`--side-position: ${sidePosition};`}>
-        <div
-            class="cube"
-            style={`--rotate-X: ${rotateX}deg; --rotate-Y: ${rotateY}deg;`}
+    <div class="cube-container">
+        <button class="up-button button" onclick={() => turnHandler("up")}>
+            <img src={arrow} alt="pijl" width="25" />
+        </button>
+        <button class="left-button button" onclick={() => turnHandler("left")}>
+            <img src={arrow} alt="pijl" width="25" />
+        </button>
+        <button
+            class="right-button button"
+            onclick={() => turnHandler("right")}
         >
-            <div class="cube-wobble">
-                <div class="face front">front</div>
-                <div class="face right">right</div>
-                <div class="face back">back</div>
-                <div class="face left">left</div>
-                <div class="face top">top</div>
-                <div class="face bottom">bottom</div>
+            <img src={arrow} alt="pijl" width="25" />
+        </button>
+        <button class="down-button button" onclick={() => turnHandler("down")}>
+            <img src={arrow} alt="pijl" width="25" />
+        </button>
+
+        <div class="scene" style={`--side-position: ${sidePosition};`}>
+            <div
+                class="cube"
+                style={`--rotate-X: ${rotateX}deg; --rotate-Y: ${rotateY}deg;`}
+            >
+                <div class="cube-wobble">
+                    <div class="face front">front</div>
+                    <div class="face right">right</div>
+                    <div class="face back">back</div>
+                    <div class="face left">left</div>
+                    <div class="face top">top</div>
+                    <div class="face bottom">bottom</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <style>
-    .scene {
+    .cube-container {
         --cube-size: 512px;
+        --arrow-gap: 50px;
 
-        .cube {
-            width: var(--cube-size);
-            height: var(--cube-size);
+        position: relative;
+
+        width: calc(var(--cube-size) + 2 * var(--arrow-gap));
+        height: calc(var(--cube-size) + 2 * var(--arrow-gap));
+
+        margin: auto;
+        .scene {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform-style: preserve-3d;
-            transform: translate(-50%, -50%) rotateX(var(--rotate-X))
-                rotateY(var(--rotate-Y));
-            transition: transform 2s cubic-bezier(0.79, 0.48, 0.31, 1.52);
-            .cube-wobble {
-                width: 100%;
-                height: 100%;
-                transform-style: preserve-3d;
-                animation: idle 7.5s linear 0s infinite alternate;
-            }
-            .face {
+            inset: var(--arrow-gap);
+            .cube {
                 width: var(--cube-size);
                 height: var(--cube-size);
                 position: absolute;
-                background-size: cover;
-                background-position: center;
+                top: 50%;
+                left: 50%;
+                transform-style: preserve-3d;
+                transform: translate(-50%, -50%) rotateX(var(--rotate-X))
+                    rotateY(var(--rotate-Y));
+                transition: transform 2s cubic-bezier(0.79, 0.48, 0.31, 1.52);
+                .cube-wobble {
+                    width: 100%;
+                    height: 100%;
+                    transform-style: preserve-3d;
+                    animation: idle 7.5s linear 0s infinite alternate;
+                }
+                .face {
+                    width: var(--cube-size);
+                    height: var(--cube-size);
+                    position: absolute;
+                    background-size: cover;
+                    background-position: center;
+                }
             }
         }
     }
-
+    .button {
+        z-index: 10;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        background-color: transparent;
+        border: transparent;
+        transition: ease-in-out .2s;
+        &:focus{
+            border: solid 2px blue
+        }
+        &:hover{
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+    }
     .up-button {
         position: absolute;
-        top: 8%;
+        top: 0;
         right: 50%;
     }
 
     .left-button {
         position: absolute;
-        top: 46%;
-        left: 10%;
+        top: 50%;
+        left: 0;
         img {
             transform: rotate(-90deg);
         }
@@ -155,8 +186,8 @@
 
     .right-button {
         position: absolute;
-        top: 46%;
-        right: 10%;
+        top: 50%;
+        right: 0;
         img {
             transform: rotate(90deg);
         }
@@ -164,15 +195,11 @@
 
     .down-button {
         position: absolute;
-        bottom: 8%;
+        bottom: 0;
         left: 50%;
         img {
             transform: rotate(180deg);
         }
-    }
-
-    .button {
-        z-index: 10;
     }
 
     .front {
