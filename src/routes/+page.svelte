@@ -101,7 +101,10 @@
                 style={`--rotate-X: ${rotateX}deg; --rotate-Y: ${rotateY}deg;`}
             >
                 <div class="cube-wobble">
-                    <div class="face front">front</div>
+                    <div class="face front">
+                        <h1>Welkom op mijn visite kaartje</h1>
+                        <p>Draai de kubus rond om meer informatie te zien</p>
+                    </div>
                     <div class="face right">right</div>
                     <div class="face back">back</div>
                     <div class="face left">left</div>
@@ -160,11 +163,11 @@
         place-items: center;
         background-color: transparent;
         border: transparent;
-        transition: ease-in-out .2s;
-        &:focus{
-            border: solid 2px blue
+        transition: ease-in-out 0.2s;
+        &:focus {
+            border: solid 2px blue;
         }
-        &:hover{
+        &:hover {
             transform: scale(1.2);
             cursor: pointer;
         }
@@ -205,32 +208,35 @@
     .front {
         transform: rotateY(0deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
-        background-color: red;
+        background-color: #e8fccf;
+        display: grid;
+        place-content: center;
+        text-align: center;
     }
     .right {
         transform: rotateY(-90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
-        background-color: blue;
+        background-color: #96e072;
     }
     .back {
         transform: rotateY(180deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
-        background-color: yellow;
+        background-color: #3da35d;
     }
     .left {
         transform: rotateY(90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
-        background-color: green;
+        background-color: #3e8914;
     }
     .top {
         transform: rotateX(90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
-        background-color: pink;
+        background-color: #134611;
     }
     .bottom {
         transform: rotateX(-90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
-        background-color: orange;
+        background-color: #fefcad;
     }
 
     @keyframes idle {
