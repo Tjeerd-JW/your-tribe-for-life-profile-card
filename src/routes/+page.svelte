@@ -1,11 +1,12 @@
 <script>
     import arrow from "$lib/img/arrow.webp";
-    // let { data } = $props();
-    // const persons = data.persons;
+    let { data } = $props();
+    let person = $derived(data.person[0]);
     let rotateX = $state(0);
     let rotateY = $state(0);
     let sidePosition = $state(2);
     let currentFace = $state("FRONT");
+    console.log(person);
 
     const transitions = {
         FRONT: {
@@ -108,7 +109,29 @@
                     <div class="face right">right</div>
                     <div class="face back">back</div>
                     <div class="face left">left</div>
-                    <div class="face top">top</div>
+                    <div class="face top">
+                        <svg viewBox="0 0 500 500">
+                            <path
+                                id="curve"
+                                fill="transparent"
+                                d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97"
+                            />
+                            <text width="500" height="200">
+                                <textPath
+                                    href="#curve"
+                                    textAnchor="middle"
+                                    startOffset="5%"
+                                >
+                                    Mijn naam is {person.name}
+                                </textPath>
+                            </text>
+                        </svg>
+                        <img
+                            src="https://fdnd.directus.app/assets/{person.mugshot}?width=500"
+                            alt="foto van {person.name}"
+                            width="400"
+                        />
+                    </div>
                     <div class="face bottom">bottom</div>
                 </div>
             </div>
@@ -209,6 +232,7 @@
         transform: rotateY(0deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #e8fccf;
+        color: contrast-color(#e8fccf);
         display: grid;
         place-content: center;
         text-align: center;
@@ -217,26 +241,53 @@
         transform: rotateY(-90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #96e072;
+        color: contrast-color(#96e072);
     }
     .back {
         transform: rotateY(180deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #3da35d;
+        color: contrast-color(#3da35d);
     }
     .left {
         transform: rotateY(90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #3e8914;
+        color: contrast-color(#3e8914);
     }
     .top {
         transform: rotateX(90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #134611;
+        color: contrast-color(#134611);
+
+        svg {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            overflow: visible;
+            text {
+                font-family: "Space Grotesk", sans-serif;
+                font-size: 30px;
+                fill: contrast-color(#134611);
+            }
+        }
+        img {
+            border-radius: 50%;
+            position: absolute;
+            inset: 0;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            z-index: 1;
+            margin: auto;
+        }
     }
     .bottom {
         transform: rotateX(-90deg)
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #fefcad;
+        color: contrast-color(#fefcad);
     }
 
     @keyframes idle {
