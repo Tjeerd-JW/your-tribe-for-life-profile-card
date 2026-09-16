@@ -1,5 +1,9 @@
 <script>
     import arrow from "$lib/img/arrow.webp";
+    import bluedesk from "$lib/img/bluedesk.png";
+    import justbetter from "$lib/img/justbetter.png";
+    import talland from "$lib/img/talland.png";
+
     let { data } = $props();
     let person = $derived(data.person[0]);
     let rotateX = $state(0);
@@ -107,7 +111,21 @@
                         <p>Draai de kubus rond om meer informatie te zien</p>
                     </div>
                     <div class="face right">right</div>
-                    <div class="face back">back</div>
+                    <div class="face back">
+                        <h2>Ervaring</h2>
+                        <ul>
+                            <li>
+                                <img src={bluedesk} alt="" width="40" /> Stage Bluedesk
+                            </li>
+                            <li>
+                                <img src={justbetter} alt="" width="40" /> Stage
+                                Justbetter
+                            </li>
+                            <li>
+                                <img src={talland} alt="" width="40" /> MBO SD
+                            </li>
+                        </ul>
+                    </div>
                     <div class="face left">left</div>
                     <div class="face top">
                         <svg viewBox="0 0 500 500">
@@ -248,6 +266,25 @@
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #3da35d;
         color: contrast-color(#3da35d);
+        display: flex;
+        flex-direction: column;
+        h2 {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        ul {
+            margin: 0 auto;
+            height: 100%;
+            li {
+                display: flex;
+                align-items: center;
+                font-size: 30px;
+                font-weight: bold;
+                img {
+                }
+            }
+        }
     }
     .left {
         transform: rotateY(90deg)
