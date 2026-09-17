@@ -3,6 +3,9 @@
     import bluedesk from "$lib/img/bluedesk.png";
     import justbetter from "$lib/img/justbetter.png";
     import talland from "$lib/img/talland.png";
+    import github from "$lib/img/github.png";
+    import linkedin from "$lib/img/linkedin.png";
+    import letterboxd from "$lib/img/letterboxd.png";
 
     let { data } = $props();
     let person = $derived(data.person[0]);
@@ -126,7 +129,9 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="face left">left</div>
+                    <div class="face left">
+                        <h2>Hobbies</h2>
+                    </div>
                     <div class="face top">
                         <svg viewBox="0 0 500 500">
                             <path
@@ -150,7 +155,27 @@
                             width="400"
                         />
                     </div>
-                    <div class="face bottom">bottom</div>
+                    <div class="face bottom">
+                        <h2>Socials</h2>
+                        <ul>
+                            <li>
+                                <a href="https://github.com/Tjeerd-JW"
+                                    ><img src={github} alt="" width="40" /> Github</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.linkedin.com/in/tjeerd-wokke-4b35ba2b6/"
+                                    ><img src={linkedin} alt="" width="40" />Linkedin</a
+                                >
+                            </li>
+                            <li>
+                                <a href="https://letterboxd.com/Yrestial/"
+                                    ><img src={letterboxd} alt="" width="40" />Letterboxd</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -291,6 +316,10 @@
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #3e8914;
         color: contrast-color(#3e8914);
+        h2 {
+            font-size: 50px;
+            text-align: center;
+        }
     }
     .top {
         transform: rotateX(90deg)
@@ -325,6 +354,34 @@
             translateZ(calc(var(--cube-size) / var(--side-position)));
         background-color: #fefcad;
         color: contrast-color(#fefcad);
+        h2 {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        ul {
+            margin: 0 auto;
+            li {
+                display: flex;
+                align-items: center;
+                font-size: 30px;
+                font-weight: bold;
+                margin: .5rem 0;
+                a {
+                    display: flex;
+                    color: inherit;
+                    text-decoration: none;
+                    transition: ease-in-out 0.2s;
+                    &:hover {
+                        margin-left: 5px;
+                        color: blue;
+                    }
+                }
+                img {
+                    
+                }
+            }
+        }
     }
 
     @keyframes idle {
