@@ -130,7 +130,14 @@
                         </ul>
                     </div>
                     <div class="face left">
-                        <h2>Hobbies</h2>
+                        <h2>Over mij</h2>
+                        <p>
+                            Je gaat dit niet geloven maar ik studeer front end
+                            development aan de HvA
+                        </p>
+                        <p>
+                            Als ik niet aan het coderen ben dan ben dan outlast ik trials en speel ik overwatch
+                        </p>
                     </div>
                     <div class="face top">
                         <svg viewBox="0 0 500 500">
@@ -166,12 +173,20 @@
                             <li>
                                 <a
                                     href="https://www.linkedin.com/in/tjeerd-wokke-4b35ba2b6/"
-                                    ><img src={linkedin} alt="" width="40" />Linkedin</a
+                                    ><img
+                                        src={linkedin}
+                                        alt=""
+                                        width="40"
+                                    />Linkedin</a
                                 >
                             </li>
                             <li>
                                 <a href="https://letterboxd.com/Yrestial/"
-                                    ><img src={letterboxd} alt="" width="40" />Letterboxd</a
+                                    ><img
+                                        src={letterboxd}
+                                        alt=""
+                                        width="40"
+                                    />Letterboxd</a
                                 >
                             </li>
                         </ul>
@@ -320,6 +335,12 @@
             font-size: 50px;
             text-align: center;
         }
+        p{
+            max-width: 70%;
+            margin: 10px auto;
+            text-align: center;
+            font-size: 1.4rem;
+        }
     }
     .top {
         transform: rotateX(90deg)
@@ -366,7 +387,7 @@
                 align-items: center;
                 font-size: 30px;
                 font-weight: bold;
-                margin: .5rem 0;
+                margin: 0.5rem 0;
                 a {
                     display: flex;
                     color: inherit;
@@ -376,9 +397,6 @@
                         margin-left: 5px;
                         color: blue;
                     }
-                }
-                img {
-                    
                 }
             }
         }
